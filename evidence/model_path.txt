@@ -1,0 +1,6 @@
+$ python train.py --version 1.1.0 --out models/model.joblib   (run inside loan-api:slim, same pinned scikit-learn)
+Saved model 1.1.0 to models/model.joblib (test AUC 0.923)
+
+$ docker run -d --name m11 -p 8000:8000 -v "$(pwd)/models:/models:ro" -e MODEL_PATH=/models/model.joblib loan-api:prod
+$ curl http://localhost:8000/health
+{"status":"ok","model_version":"1.1.0"}

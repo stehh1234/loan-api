@@ -1,0 +1,33 @@
+$ DOCKER_USER=stehhhhhhhh
+$ docker build -t loan-api:prod -f Dockerfile.prod .
+sha256:b648f1a04ace8677630b33596bdc072e46c2b85a1497841f430ac8029caa4306
+$ docker tag loan-api:prod $DOCKER_USER/loan-api:1.0.0
+$ docker tag loan-api:prod $DOCKER_USER/loan-api:latest
+$ docker push $DOCKER_USER/loan-api:1.0.0
+The push refers to repository [docker.io/stehhhhhhhh/loan-api]
+44136fa355b3: Pushed
+f600b8f650dd: Pushed
+3eb771151506: Pushed
+acca7542dfc7: Pushed
+4974ff71f1fa: Pushed
+df10288e2817: Pushed
+1545e338afcc: Pushed
+245d8dcf52ec: Pushed
+f574edac59d9: Pushed
+6fc242d221a6: Pushed
+91ffcc555f17: Pushed
+1.0.0: digest: sha256:b648f1a04ace8677630b33596bdc072e46c2b85a1497841f430ac8029caa4306 size: 856
+$ docker push $DOCKER_USER/loan-api:latest
+The push refers to repository [docker.io/stehhhhhhhh/loan-api]
+3eb771151506: Layer already exists
+44136fa355b3: Already exists
+f600b8f650dd: Already exists
+6fc242d221a6: Layer already exists
+acca7542dfc7: Layer already exists
+4974ff71f1fa: Layer already exists
+f574edac59d9: Layer already exists
+df10288e2817: Layer already exists
+91ffcc555f17: Layer already exists
+1545e338afcc: Layer already exists
+245d8dcf52ec: Layer already exists
+latest: digest: sha256:b648f1a04ace8677630b33596bdc072e46c2b85a1497841f430ac8029caa4306 size: 856

@@ -1,0 +1,11 @@
+$ docker images loan-api
+REPOSITORY:TAG   IMAGE ID       SIZE
+loan-api:full    2a28cc337877   2.18GB
+loan-api:slim    81883eef6951   757MB
+loan-api:prod    2247058868a4   774MB
+
+$ docker image inspect --format "{{.Size}}" (bytes, uncompressed)
+loan-api:full  2181558044
+loan-api:slim  756891961
+loan-api:prod  774300425
+prod is 64.5% smaller than full (774 MB vs 2182 MB)

@@ -1,0 +1,24 @@
+# Git history
+.git
+.gitignore
+
+# Virtual environments and caches
+.venv
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local models: the image trains its own with its own scikit-learn
+model.joblib
+models/
+
+# Dev config and secrets
+.devcontainer/
+.vscode/
+.env
+*.env
+
+# Not needed inside the image
+tests/
+CHECKLIST.md
+evidence/

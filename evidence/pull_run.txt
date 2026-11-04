@@ -1,0 +1,21 @@
+$ docker compose down
+$ docker rmi $DOCKER_USER/loan-api:1.0.0 $DOCKER_USER/loan-api:latest loan-api:prod
+Untagged: stehhhhhhhh/loan-api:1.0.0
+Untagged: stehhhhhhhh/loan-api:latest
+Untagged: loan-api:prod
+Deleted: sha256:b648f1a04ace8677630b33596bdc072e46c2b85a1497841f430ac8029caa4306
+$ docker images stehhhhhhhh/loan-api   (empty: no local copy)
+IMAGE   ID             DISK USAGE   CONTENT SIZE   EXTRA
+$ docker run --rm -p 8000:8000 $DOCKER_USER/loan-api:1.0.0
+Unable to find image 'stehhhhhhhh/loan-api:1.0.0' locally
+1.0.0: Pulling from stehhhhhhhh/loan-api
+44136fa355b3: Already exists
+f600b8f650dd: Download complete
+Digest: sha256:b648f1a04ace8677630b33596bdc072e46c2b85a1497841f430ac8029caa4306
+Status: Downloaded newer image for stehhhhhhhh/loan-api:1.0.0
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+
+$ curl -X POST http://localhost:8000/api/v1/predictions -H "Content-Type: application/json" -d {example body}
+{"default_probability":0.095,"risk_band":"low","model_version":"1.0.0"}
+HTTP 200

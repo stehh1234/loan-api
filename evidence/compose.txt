@@ -1,0 +1,20 @@
+$ docker compose up -d --build
+ Image loan-api-api Built 
+ Container loan-api-db-1 Started 
+ Container loan-api-adminer-1 Started 
+ Container loan-api-db-1 Healthy 
+ Container loan-api-api-1 Started 
+$ sleep 35 && docker compose ps
+SERVICE   IMAGE           STATUS                    PORTS
+adminer   adminer:4.8.1   Up 42 seconds             0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+api       loan-api-api    Up 35 seconds (healthy)   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+db        postgres:17     Up 42 seconds (healthy)   5432/tcp
+
+$ curl http://localhost:8000/health
+{"status":"ok","model_version":"1.0.0"}
+$ docker compose exec db psql -U loans -d loans -c "SELECT count(*) FROM loan_applications;"
+ count 
+-------
+     6
+(1 row)
+

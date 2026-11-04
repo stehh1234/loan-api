@@ -1,0 +1,9 @@
+$ docker run -d --name prod -p 8000:8000 loan-api:prod
+b7b6b466295ffae3e25c409438d8b509b39a53a089bdbe9b9b718d27a005265c
+$ docker exec prod whoami
+appuser
+$ sleep 35 && docker ps --filter name=prod
+NAMES     IMAGE           STATUS                    PORTS
+prod      loan-api:prod   Up 38 seconds (healthy)   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+$ docker exec loan-api:slim whoami (for comparison)
+root

@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-9.1.1, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /src
+plugins: anyio-4.16.0
+collecting ... collected 5 items
+
+tests/test_api.py::test_health_reports_model_version PASSED              [ 20%]
+tests/test_api.py::test_prediction_is_a_probability PASSED               [ 40%]
+tests/test_api.py::test_amount_above_limit_is_rejected PASSED            [ 60%]
+tests/test_api.py::test_create_and_read_application PASSED               [ 80%]
+tests/test_api.py::test_missing_application_is_404 PASSED                [100%]
+
+============================== 5 passed in 3.90s ===============================
