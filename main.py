@@ -40,7 +40,7 @@ def score(features: LoanFeatures) -> Prediction:
     X = pd.DataFrame([features.model_dump()])[ml["features"]]
     probability = float(ml["model"].predict_proba(X)[0, 1])
     band = "low" if probability < 0.2 else "medium" if probability < 0.5 else "high"
-    return Prediction(default_probability=round(probability, 3), risk_band=band, model_version=ml["version"])
+    return Prediction(default_probability=round(1 - probability, 3), risk_band=band, model_version=ml["version"])
 
 
 @app.get("/health")
