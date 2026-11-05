@@ -55,8 +55,10 @@ jobs:
     steps:
       - name: Wait until the live API reports this commit
         run: |
+          APP="${{ vars.APP_URL }}"
+          APP="${APP%/}"                     # tolerate a trailing slash in the APP_URL variable
           for attempt in $(seq 1 30); do
-            live_sha=$(curl -fsS --max-time 90 "${{ vars.APP_URL }}/health" | python3 -c "import sys, json; print(json.load(sys.stdin).get('git_sha', ''))" || true)
+            live_sha=$(curl -fsS --max-time 90 "$APP/health" | python3 -c "import sys, json; print(json.load(sys.stdin).get('git_sha', ''))" || true)
             if [ "$live_sha" = "${{ github.sha }}" ]; then
               echo "Deployed and healthy: $live_sha"
               exit 0
