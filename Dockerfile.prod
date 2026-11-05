@@ -16,6 +16,8 @@ WORKDIR /app
 COPY --from=builder /opt/venv /opt/venv
 COPY --from=builder /app/model.joblib .
 COPY schemas.py main.py ./
+ARG GIT_SHA=dev
+ENV GIT_SHA=$GIT_SHA
 USER appuser
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \

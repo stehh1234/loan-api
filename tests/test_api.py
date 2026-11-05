@@ -15,7 +15,10 @@ def client():
 
 
 def test_health_reports_model_version(client):
-    assert client.get("/health").json() == {"status": "ok", "model_version": "1.0.0"}
+    body = client.get("/health").json()
+    assert body["status"] == "ok"
+    assert body["model_version"] == "1.0.0"
+    assert body["git_sha"]  # "dev" locally, the commit SHA in production
 
 
 def test_prediction_is_a_probability(client):
